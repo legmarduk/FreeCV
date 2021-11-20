@@ -25,6 +25,7 @@ const Formulario = () => {
     },
     resolver: joiResolver(formularioSchema())
   })
+  const watchDescription = useWatch({ control, name: "descripcion" })
 
   const onSubmit = data => {
     console.log("asdasd")
@@ -39,13 +40,7 @@ const Formulario = () => {
             name="nombres"
             label="Nombres"
             control={control}
-          />
-        </CustomGrid>
-        <CustomGrid>
-          <Input
-            name="nombres"
-            label="Nombres"
-            control={control}
+
           />
         </CustomGrid>
         <CustomGrid>
@@ -96,6 +91,16 @@ const Formulario = () => {
             rows={4}
             control={control}
           />
+
+          <Grid
+            container
+            direction="row-reverse"
+            justifyContent="flex-start"
+            alignItems="center"
+          >
+            <small> Tienes {2000 - watchDescription.length} caracteres</small>
+          </Grid>
+
         </CustomGrid>
         <CustomGrid>
           <CustomDatePicker

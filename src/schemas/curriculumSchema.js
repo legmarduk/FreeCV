@@ -34,7 +34,7 @@ export const formularioSchema = () =>
       'string.pattern.base':`solo numeros`,
       'any.required': `email el campo es requerido`,
     }),
-    descripcion: Joi.string().max(1000).required().messages({
+    descripcion: Joi.string().max(2000).required().messages({
       'string.base': `descripcion debe ser 'texto'`,
       'string.empty': `descripcion no debe ser vacio`,
       'string.max': `descripcion minimo de caracteres {#limit}`,

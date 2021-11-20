@@ -5,17 +5,16 @@ import { TextField } from "@mui/material";
 import DatePicker from '@mui/lab/DatePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-
+import es from "date-fns/locale/es";
 const DATE_FORM = 'dd-MM-yyyy';
 
 const CustomDatePicker = ({ name, label, control, ...otros }) => {
-  const [value1, setValue1] = useState()
   return (
     <Controller
       name={name}
       control={control}
       render={({ field: { onChange, value, onBlur }, fieldState: { error } }) => (
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
+        <LocalizationProvider dateAdapter={AdapterDateFns} locale={es}>
           <DatePicker
             id={name}
             label={label}
@@ -23,7 +22,6 @@ const CustomDatePicker = ({ name, label, control, ...otros }) => {
             onChange={onChange}
             inputFormat="dd/MM/yyyy"
             {...otros}
-
             renderInput={(params) =>
               <TextField
                 {...params}
