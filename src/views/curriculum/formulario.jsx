@@ -1,6 +1,6 @@
 import React from 'react'
 import { useForm, useWatch } from 'react-hook-form'
-import { Grid, Button } from '@mui/material'
+import { Grid, Button, InputAdornment, IconButton } from '@mui/material'
 import Input from '../../components/form/Input'
 import CustomDatePicker from '../../components/form/DatePicker'
 import InputRut from '../../components/form/InputRut'
@@ -8,6 +8,13 @@ import { makeStyles } from '@mui/styles'
 import { joiResolver } from '@hookform/resolvers/joi';
 import { formularioSchema } from '../../schemas/curriculumSchema'
 import CustomGrid from '../../components/utils/customGrid'
+
+
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import PhoneIcon from '@mui/icons-material/Phone';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 
 const Formulario = () => {
 
@@ -22,9 +29,15 @@ const Formulario = () => {
       telefono: "",
       descripcion: "",
       fecha_naciminento: "",
+      links: {
+        linkedin: "",
+        git: "",
+      },
+
     },
     resolver: joiResolver(formularioSchema())
   })
+  //
   const watchDescription = useWatch({ control, name: "descripcion" })
 
   const onSubmit = data => {
@@ -40,7 +53,13 @@ const Formulario = () => {
             name="nombres"
             label="Nombres"
             control={control}
-
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">
+                  <AccountCircleOutlinedIcon />
+                </InputAdornment>
+              )
+            }}
           />
         </CustomGrid>
         <CustomGrid>
@@ -48,6 +67,13 @@ const Formulario = () => {
             name="apellido_paterno"
             label="Apellido paterno"
             control={control}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">
+                  <AccountCircleOutlinedIcon />
+                </InputAdornment>
+              )
+            }}
           />
         </CustomGrid>
         <CustomGrid>
@@ -55,6 +81,13 @@ const Formulario = () => {
             name="apellido_materno"
             label="Apellido materno"
             control={control}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">
+                  <AccountCircleOutlinedIcon />
+                </InputAdornment>
+              )
+            }}
           />
         </CustomGrid>
         <CustomGrid>
@@ -63,6 +96,14 @@ const Formulario = () => {
             label="rut"
             type=""
             control={control}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">
+                  <CreditCardOutlinedIcon />
+                </InputAdornment>
+              )
+            }}
+
           />
         </CustomGrid>
         <CustomGrid>
@@ -71,6 +112,13 @@ const Formulario = () => {
             label="email"
             type="email"
             control={control}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">
+                  <AlternateEmailIcon />
+                </InputAdornment>
+              )
+            }}
           />
         </CustomGrid>
         <CustomGrid>
@@ -79,6 +127,14 @@ const Formulario = () => {
             label="telefono"
             type="number"
             control={control}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">
+                  <PhoneIcon />
+                </InputAdornment>
+              )
+            }}
+
           />
         </CustomGrid>
 
