@@ -5,7 +5,7 @@ import DatePicker from '@mui/lab/DatePicker';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import es from "date-fns/locale/es";
-
+import { format } from "date-fns";
 const DATE_FORM = 'dd-MM-yyyy';
 
 const CustomDatePicker = ({ name, label, control, ...otros }) => {
@@ -19,6 +19,7 @@ const CustomDatePicker = ({ name, label, control, ...otros }) => {
             id={name}
             label={label}
             value={value}
+            //value={value =>{format(value,"dd/MM/yyyy")}}
             onChange={onChange}
             inputFormat="dd/MM/yyyy"
             {...otros}

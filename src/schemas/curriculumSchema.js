@@ -51,13 +51,19 @@ export const formularioSchema = () => Joi.object({
     'date.empty': `fecha no debe ser vacio`,
     'date.format': `tu mama`,
     'any.required': `fecha el campo es requerido`,
-  }), //ver is es posible validar esto
-  links: Joi.object().keys({
-    linkedin: Joi.string(),
-    git: Joi.string(),
   }),
-  //links: "",
-  //estudios: [],
+  links: Joi.object().keys({
+    linkedin: Joi.string().optional().allow(""),
+    git: Joi.string().optional().allow(""),
+  }).optional(),
+  
+  // estudios: Joi.array().items(Joi.object().keys({
+  //   fecha_inicio: Joi.date(),
+  //   fecha_termino: Joi.date().when(
+  //     'fecha_inicio',
+  //     {is: (value)=>value < Joi.ref('fecha_termino'),then: Joi.date().optional()}),
+  //   descripcion:
+  // })),  
   //experiencia_laboral: [],
   //habilidades: [],
 });

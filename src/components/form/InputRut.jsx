@@ -18,6 +18,7 @@ const InputRut = ({ name, control, label, type, transform, ...otros }) => {
           variant="outlined"
           size="small"
           InputLabelProps={{ shrink: true }}
+          inputProps={{maxLength:12}}
           value={format(value)}
           onChange={onChange}
           error={!!error}

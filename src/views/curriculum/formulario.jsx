@@ -1,5 +1,5 @@
 import React from 'react'
-import { useForm, useWatch } from 'react-hook-form'
+import { useForm, useWatch,useFieldArray } from 'react-hook-form'
 import { Grid, Button, InputAdornment, IconButton } from '@mui/material'
 import Input from '../../components/form/Input'
 import CustomDatePicker from '../../components/form/DatePicker'
@@ -15,8 +15,12 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import PhoneIcon from '@mui/icons-material/Phone';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
 
 const Formulario = () => {
+  
+  
 
   const classes = useStyles();
   const { register, handleSubmit, control, transform, formState: { errors } } = useForm({
@@ -28,16 +32,24 @@ const Formulario = () => {
       email: "",
       telefono: "",
       descripcion: "",
-      fecha_naciminento: "",
+      fecha_naciminento:"",
       links: {
         linkedin: "",
         git: "",
       },
+      // estudios:[
+      //   {
+      //     fecha_inicio:"",
+      //     fecha_ternino:"",
+      //     detalle:"",
+      //   }
+      // ]
 
     },
     resolver: joiResolver(formularioSchema())
   })
-  //
+ 
+  
   const watchDescription = useWatch({ control, name: "descripcion" })
 
   const onSubmit = data => {
@@ -47,7 +59,6 @@ const Formulario = () => {
 
   return (
     <Grid container direction="column">
-      <form>
         <CustomGrid>
           <Input
             name="nombres"
@@ -122,7 +133,7 @@ const Formulario = () => {
           />
         </CustomGrid>
         <CustomGrid>
-          <Input
+            <Input
             name="telefono"
             label="telefono"
             type="number"
@@ -134,8 +145,8 @@ const Formulario = () => {
                 </InputAdornment>
               )
             }}
-
           />
+          
         </CustomGrid>
 
         <CustomGrid>
@@ -166,11 +177,38 @@ const Formulario = () => {
             maxDate={new Date()}
           />
         </CustomGrid>
+        <CustomGrid >
+          <Input
+            name="links.linkedin"
+            label="linkedin"
+            control={control}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">
+                  <LinkedInIcon />
+                </InputAdornment>
+              )
+            }}
+          />
+        </CustomGrid>
+        <CustomGrid >
+          <Input
+            name="links.git"
+            label="git"
+            control={control}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">
+                  <GitHubIcon />
+                </InputAdornment>
+              )
+            }}
+          />
+        </CustomGrid>
         <CustomGrid></CustomGrid>
         <Button
           onClick={handleSubmit(onSubmit)}
         > crear </Button>
-      </form>
     </Grid >
   )
 }
@@ -185,15 +223,46 @@ export default Formulario;
 
 /**
  * nombres: "", //x
-      apellido_paterno: "", //x
-      apellido_materno: "", //x
-      fecha_naciminento: "",
-      rut: "",
-      correo: "",
-      telefono: "",
+      apellido_paterno: "", // /
+      apellido_materno: "", // /
+      fecha_naciminento: "",   /
+      rut: "",                /
+      correo: "",             /
+      telefono: "",           /
       links: "",
       descripcion: "",
       estudios: [],
       experiencia_laboral: [],
       habilidades: [],
  */
+
+      /**
+       * 
+       *  const { fields, append, prepend, remove, swap, move, insert } = useFieldArray({
+    control, // control props comes from useForm (optional: if you are using FormContext)
+    name: "telefonos", // unique name for your Field Array
+    // keyName: "id", default to "id", you can change the key name
+  });
+       * 
+       * <CustomGrid>
+          <Button onClick={()=>{append({telefono:""})}}> asdasd</Button>
+          {fields.map((telefono,index) =>
+            <Input
+            key={`telefono.${index}`}
+            name={`telefonos.${index}.telefono`}//"telefono"
+            label="telefono"
+            type="number"
+            control={control}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">
+                  <PhoneIcon />
+                </InputAdornment>
+              )
+            }}
+
+          />
+          )}
+          
+        </CustomGrid>
+       */
