@@ -1,12 +1,15 @@
 import Layout from "./views/landing/landing";
 import Formulario from "./views/curriculum/formulario";
-//import { esES } from '@mui/material/locale';
+import CustomStepper from "./views/curriculum/stepper";
+import Landing from "./views/landing/landing";
 
 function App() {
+  
   return (
-
     <div className="App" >
-      <Formulario />
+      {/*<Formulario /> */}
+      {/*<CustomStepper />*/}
+      <Landing />
     </div>
   );
 }

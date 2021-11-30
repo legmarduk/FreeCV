@@ -55,15 +55,20 @@ export const formularioSchema = () => Joi.object({
   links: Joi.object().keys({
     linkedin: Joi.string().optional().allow(""),
     git: Joi.string().optional().allow(""),
+    web: Joi.string().optional().allow(""),
   }).optional(),
-  
-  // estudios: Joi.array().items(Joi.object().keys({
-  //   fecha_inicio: Joi.date(),
-  //   fecha_termino: Joi.date().when(
-  //     'fecha_inicio',
-  //     {is: (value)=>value < Joi.ref('fecha_termino'),then: Joi.date().optional()}),
-  //   descripcion:
-  // })),  
-  //experiencia_laboral: [],
-  //habilidades: [],
+  estudios: Joi.array().items(Joi.object().keys({
+    fecha_inicio: Joi.date().required(),
+    fecha_termino: Joi.date().greater(Joi.ref('fecha_inicio')).optional().allow(""),
+    descripcion: Joi.string().max(2000).required(),
+    institucion: Joi.string().max(100).required(),
+  })),
+  laborales: Joi.array().items(Joi.object().keys({
+    fecha_inicio: Joi.date().required(),
+    fecha_termino: Joi.date().greater(Joi.ref('fecha_inicio')).optional().allow(""),
+    empresa: Joi.string().max(100).required(),
+    descripcion: Joi.string().max(100).required(),
+  }))
+
 });
+//habilidades: [],
