@@ -10,7 +10,7 @@ const Body =()=>{
     <Grid container direction="column" justifyContent="center" alignItems="center" className={classes.body}>
       <TypewriterComponent 
         onInit={ (typewriter) => {
-          typewriter.typeString(`<h1>¿Necesitas un CV?</h1>`)
+          typewriter.typeString(`<h1> ¿Necesitas un CV?</h1>`)
           .pauseFor(2500)
           .deleteAll()
           .typeString(`<h1>Crea tu CV Gratis</h1>`)
@@ -32,7 +32,10 @@ const useStyles = makeStyles({
   body:{
     fontSize: "3rem",
     fontWeight: "400px",
-    color:"#fff"
+    color:"#fff",
+    minHeight:"300px",
+    width:"90%"
+    
   }
 })
 

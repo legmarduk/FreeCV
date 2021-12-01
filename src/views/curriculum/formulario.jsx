@@ -69,6 +69,7 @@ const Formulario = () => {
   const watchDescription = useWatch({ control, name: "descripcion" })
 
   console.log("'eliminar despues' errors ",errors)
+  
   const onSubmit = data => {
     console.log("asdasd")
     console.log(data)

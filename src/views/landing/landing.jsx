@@ -2,7 +2,8 @@ import React from 'react'
 import { Grid, Toolbar } from '@mui/material';
 import { makeStyles } from '@mui/styles';
 import Header from './header/header';
-import Body from './header/body';
+import Body from './body/body';
+import ButtonBody from './body/buttonBody';
 
 const Landing = () =>{
   const classes = useStyles();
@@ -12,6 +13,7 @@ const Landing = () =>{
           <Header />
           <Body />
         </Toolbar>
+        <ButtonBody/>
      </Grid>
   )
 }

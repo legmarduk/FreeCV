@@ -49,7 +49,7 @@ export const formularioSchema = () => Joi.object({
     'date.base': `fecha debe tener formato valido o distinto de vacio`,
     'date.iso': `error en formato de la fecha`,
     'date.empty': `fecha no debe ser vacio`,
-    'date.format': `tu mama`,
+    'date.format': `formato incorrecto`,
     'any.required': `fecha el campo es requerido`,
   }),
   links: Joi.object().keys({
