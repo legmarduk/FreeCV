@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
-const CustomGrid = ({children,lg=8}) => {
+const CustomGrid = ({children,lg=9}) => {
 
   return (
     <Grid container item direction="row" justifyContent="center" alignItems="center">

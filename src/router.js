@@ -1,15 +1,16 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter,Routes,Route} from "react-router-dom";
 import Landing from './views/landing/landing'
+import CurriculumForm from './views/curriculum';
 
-const Routes = () => {
+const CustomRoutes = () => {
   return (
-    <Switch>
-      <Router>
-        <Route path="/inicio" component={Landing} />
-      </Router>
-    </Switch>
+    
+      <Routes>
+        <Route index element={<Landing />}/>
+        <Route path="/curriculum" element={<CurriculumForm />}/>
+      </Routes>
   )
 }
 
-export default Routes;
+export default CustomRoutes;

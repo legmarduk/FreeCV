@@ -36,7 +36,7 @@ export const formularioSchema = () => Joi.object({
   descripcion: Joi.string().max(2000).required().messages({
     'string.base': `descripcion debe ser 'texto'`,
     'string.empty': `descripcion no debe ser vacio`,
-    'string.max': `descripcion minimo de caracteres {#limit}`,
+    'string.max': `descripcion maximo de caracteres {#limit}`,
     'any.required': `descripcion el campo es requerido`
   }),
   rut: Joi.string().required().min(11).max(12).messages({
@@ -58,16 +58,42 @@ export const formularioSchema = () => Joi.object({
     web: Joi.string().optional().allow(""),
   }).optional(),
   estudios: Joi.array().items(Joi.object().keys({
-    fecha_inicio: Joi.date().required(),
+    fecha_inicio: Joi.date().required().messages({
+      'date.base': `fecha debe tener formato valido o distinto de vacio`,
+      'any.required': `fecha el campo es requerido`
+    }),
     fecha_termino: Joi.date().greater(Joi.ref('fecha_inicio')).optional().allow(""),
-    descripcion: Joi.string().max(2000).required(),
-    institucion: Joi.string().max(100).required(),
+    descripcion: Joi.string().max(2000).required().messages({
+      'string.base': `descripcion de estudio debe ser 'texto'`,
+      'string.empty': `descripcion de estudio no debe ser vacio`,
+      'string.max': `descripcion de estudio maximo de caracteres {#limit}`,
+      'any.required': `descripcion de estudio el campo es requerido`
+    }),
+    institucion: Joi.string().max(100).required().messages({
+      'string.base': `institucion de estudio debe ser 'texto'`,
+      'string.empty': `institucion de estudio no debe ser vacio`,
+      'string.max': `institucion de estudio maximo de caracteres {#limit}`,
+      'any.required': `institucion de estudio el campo es requerido`
+    }),
   })),
   laborales: Joi.array().items(Joi.object().keys({
-    fecha_inicio: Joi.date().required(),
+    fecha_inicio: Joi.date().required().messages({
+      'date.base': `fecha debe tener formato valido o distinto de vacio`,
+      'any.required': `fecha el campo es requerido`
+    }),
     fecha_termino: Joi.date().greater(Joi.ref('fecha_inicio')).optional().allow(""),
-    empresa: Joi.string().max(100).required(),
-    descripcion: Joi.string().max(100).required(),
+    empresa: Joi.string().max(100).required().messages({
+      'string.base': `empresa debe ser 'texto'`,
+      'string.empty': `empresa no debe ser vacio`,
+      'string.max': `empresa maximo de caracteres {#limit}`,
+      'any.required': `empresa es campo es requerido`
+    }),
+    descripcion: Joi.string().max(100).required().messages({
+      'string.base': `descripcion de trabajo debe ser 'texto'`,
+      'string.empty': `descripcion de trabajo no debe ser vacio`,
+      'string.max': `descripcion de trabajo minimo de caracteres {#limit}`,
+      'any.required': `descripcion de trabajo el campo es requerido`
+    }),
   }))
 
 });

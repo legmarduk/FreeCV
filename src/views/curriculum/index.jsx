@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Typography, Accordion, AccordionSummary, AccordionDetails, Grid, button } from "@mui/material";
+import { Typography, Accordion, AccordionSummary, AccordionDetails, Grid, Button } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { makeStyles } from '@mui/styles';
 import { useForm, useWatch, useFieldArray } from 'react-hook-form'
@@ -17,7 +17,6 @@ const CurriculumForm = () => {
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false)
   }
-
   const { register, handleSubmit, control, transform, formState: { errors } } = useForm({
     defaultValues: {
       nombres: "",
@@ -63,8 +62,6 @@ const CurriculumForm = () => {
     name: "laborales"
   })
   const watchDescription = useWatch({ control, name: "descripcion" })
-
-  console.log("'eliminar despues' errors ", errors)
 
   const onSubmit = data => {
     console.log("asdasd")
@@ -155,6 +152,9 @@ const CurriculumForm = () => {
               aqui va la infromacion  Habilidades
             </AccordionDetails>
           </Accordion>
+          <Button
+            onClick={handleSubmit(onSubmit)}
+          > crear </Button>
         </Grid>
       </CustomGrid>
     </Grid>
