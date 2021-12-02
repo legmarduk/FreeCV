@@ -1,14 +1,14 @@
 import React from 'react';
-import { Grid, InputAdornment,Button } from '@mui/material';
+import { Grid, InputAdornment, Button } from '@mui/material';
 import Input from '../../../components/form/Input'
 import CustomDatePicker from '../../../components/form/DatePicker'
 import CustomGrid from '../../../components/utils/customGrid'
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import SchoolIcon from '@mui/icons-material/School';
 
-const InformacionEstudios=({control,appendStudio,fieldStudios,removeStudio})=>{
-  return(
-      <CustomGrid>
+const InformacionEstudios = ({ control, appendStudio, fieldStudios, removeStudio }) => {
+  return (
+    <CustomGrid>
         <Button onClick={() => {
           appendStudio({
             fecha_inicio: "",
@@ -19,7 +19,7 @@ const InformacionEstudios=({control,appendStudio,fieldStudios,removeStudio})=>{
         }}>Agregar estudios</Button>
         {fieldStudios.map((estudio, index) =>
           <>
-            <Grid container direction="row" justifyContent="center" alignItems="center">
+            <Grid container direction="row" justifyContent="center" alignItems="center" spacing={1}>
               <Grid item xs={12} md={6} lg={6}>
                 <CustomDatePicker
                   key={`estudio.${index}.inicio`}
@@ -75,8 +75,7 @@ const InformacionEstudios=({control,appendStudio,fieldStudios,removeStudio})=>{
             </Button>
           </>
         )}
-
-      </CustomGrid>
+    </CustomGrid>
 
   )
 }

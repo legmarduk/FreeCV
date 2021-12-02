@@ -152,9 +152,15 @@ const CurriculumForm = () => {
               aqui va la infromacion  Habilidades
             </AccordionDetails>
           </Accordion>
-          <Button
-            onClick={handleSubmit(onSubmit)}
-          > crear </Button>
+          <Grid container direction="row" justifyContent="center" alignItems="center">
+            <Grid item xs={12} md={4} lg={3} >
+              <Button
+                style={{ color: "#f6f7fe", backgroundColor: "#70da01", marginTop: "10px", width:"100%" }}
+                onClick={handleSubmit(onSubmit)}
+              > crear
+              </Button>
+            </Grid>
+          </Grid>
         </Grid>
       </CustomGrid>
     </Grid>

@@ -6,21 +6,23 @@ import { useNavigate } from "react-router";
 const ButtonBody = () => {
   const classes = useStyles()
   let navegate = useNavigate();
-  return(
+  return (
     <Grid container direction="row" justifyContent="center" alignItems="center" >
-        <Button 
-            className={classes.button} 
-            style={{backgroundColor:"red",color:"#fff",borderRadius:"20px"}}
-            onClick={()=>{navegate('/curriculum')}}
-          >
-          Crear <FeedIcon style={{marginLeft:"8px"}} />
+      <Grid item sx={12} md={4} lg={3} >
+        <Button
+          className={classes.button}
+          style={{ backgroundColor: "red", color: "#fff", borderRadius: "20px" }}
+          onClick={() => { navegate('/curriculum') }}
+        >
+          Crear <FeedIcon style={{ marginLeft: "8px" }} />
         </Button>
+      </Grid>
     </Grid>
   )
 }
 const useStyles = makeStyles({
-  button:{
-    width:"20%",
+  button: {
+    width: "100%",
   }
 })
 

@@ -34,8 +34,7 @@ const useStyles = makeStyles({
     fontWeight: "400px",
     color:"#fff",
     minHeight:"300px",
-    width:"90%"
-    
+    width:"100%"
   }
 })
 
